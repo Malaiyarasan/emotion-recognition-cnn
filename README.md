@@ -1,64 +1,56 @@
-# Emotion Recognition using CNN (Computer Vision)
+# Emotion Recognition (CNN)
 
-This project builds a **CNN-based emotion recognition model** that classifies
-facial expressions (e.g., happy, sad, neutral) from images. It is designed as
-a building block for human–robot interaction and safety-aware systems.
+Real-time emotion recognition from face images using a pretrained CNN model.
 
----
-
-## 🔍 Problem
-
-Robots and AI systems that interact with humans should understand basic
-emotional signals. This project uses a convolutional neural network (CNN)
-to classify emotions from face images.
+This repo contains a Colab notebook, a pretrained Keras model, and a live demo.
 
 ---
 
-## 🧠 Approach
+## 🚀 Live Demo
+Try the model (upload real human face or use webcam):
 
-1. **Dataset**
-   - Face images organized into folders, one folder per emotion:
-     - `happy/`, `sad/`, `neutral/`, `angry/`, etc.
-   - All folders kept under `data/emotions/`.
-
-2. **Preprocessing**
-   - Convert images to grayscale or RGB.
-   - Resize to a fixed size (e.g., 48×48 or 64×64).
-   - Normalize pixel values to [0, 1].
-
-3. **Model**
-   - CNN with multiple convolution + pooling layers.
-   - Dense layers on top for classification.
-   - Softmax output over emotion classes.
-
-4. **Training & Evaluation**
-   - Train on training set, validate on validation set.
-   - Report accuracy and classification report.
+👉 https://a5abcf716057fcd866.gradio.live
 
 ---
 
-## 🧰 Tech Stack
+## ▶ Open in Google Colab
+Open and run the notebook:
 
-- Python
-- TensorFlow / Keras
-- OpenCV (optional, for preprocessing)
-- NumPy, Pandas
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Malaiyarasan/emotion-recognition-cnn/blob/main/notebooks/emotion_recognition.ipynb)
 
 ---
 
-## 📁 Project Structure
+## 📦 Files
+- `models/emotion_pretrained.h5` — pretrained Keras model used in demo  
+- `notebooks/emotion_recognition.ipynb` — Colab notebook (demo + helpers)  
+- `src/train_emotion_cnn.py` — training script (optional)  
+- `README.md` — this file
 
-```text
-emotion-recognition-cnn/
-│
-├── data/
-│   └── emotions/                # each subfolder = emotion label (placeholder)
-│       ├── happy/
-│       ├── sad/
-│       ├── neutral/
-│       └── ...
-│
-├── src/
-│   └── train_emotion_cnn.py     # training script
-│
-└── README.md
+---
+
+## 🔍 How it works (brief)
+1. Face detection (OpenCV Haar cascade) → crop largest face.  
+2. Resize & normalize image to model input (48×48 grayscale).  
+3. Pretrained CNN predicts probabilities for 7 emotions:
+   `angry, disgust, fear, happy, neutral, sad, surprise`.  
+4. Gradio UI shows top probabilities and label.
+
+---
+
+## 🛠 Tech
+- TensorFlow / Keras  
+- OpenCV  
+- Gradio  
+- Python, NumPy, Pillow
+
+---
+
+## ⚠ Notes
+- If your model expects a different input size / channels, update preprocessing in the notebook accordingly.  
+- For improved real-world accuracy, fine-tune on larger datasets (AffectNet, RAF-DB) or use a pretrained backbone.
+
+---
+
+## 👤 Author
+**Malaiyarasan M**  
+AI & Data Engineer  
